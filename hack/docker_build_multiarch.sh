@@ -23,5 +23,5 @@ PLATFORMS=linux/amd64,linux/arm64
 ${CONTAINER_CLI} ${CONTAINER_BUILDER} \
   --platform ${PLATFORMS} \
   ${PUSH} \
-  -f build/Dockerfile \
+  -f build/Dockerfile-geovis \
   -t "${REPO}"/ks-console:"${TAG}" .
