@@ -19,8 +19,11 @@
 const isEmpty = require('lodash/isEmpty')
 const jwtDecode = require('jwt-decode')
 const omit = require('lodash/omit')
-
 const base64_url_decode = require('jwt-decode/lib/base64_url_decode')
+const { getServerConfig } = require('../libs/utils')
+
+const { client: clientConfig } = getServerConfig()
+
 const {
   login,
   oAuthLogin,
@@ -32,6 +35,7 @@ const {
   isAppsRoute,
   decryptPassword,
   safeParseJSON,
+  safeBase64,
 } = require('../libs/utils')
 
 const { send_gateway_request } = require('../libs/request')
@@ -55,9 +59,11 @@ const handleLogin = async ctx => {
 
   if (isEmpty(error)) {
     try {
-      params.password = decryptPassword(params.encrypt, 'kubesphere')
+      const encryptKey = clientConfig.encryptKey || 'kubesphere'
+      params.password = decryptPassword(params.encrypt, encryptKey)
 
       user = await login(params, { 'x-client-ip': ctx.request.ip })
+
       if (!user) {
         Object.assign(error, {
           status: 401,
@@ -121,7 +127,8 @@ const handleLogin = async ctx => {
   ctx.cookies.set('referer', null)
 
   if (user.username === 'system:pre-registration') {
-    ctx.cookies.set('defaultUser', user.extraname)
+    const extraname = safeBase64.safeBtoa(user.extraname)
+    ctx.cookies.set('defaultUser', extraname)
     ctx.cookies.set('defaultEmail', user.email)
     return ctx.redirect('/login/confirm')
   }
@@ -145,6 +152,8 @@ const handleLogout = async ctx => {
     decodeURIComponent(ctx.cookies.get('oAuthLoginInfo'))
   )
 
+  const token = ctx.cookies.get('token')
+
   ctx.cookies.set('token', null)
   ctx.cookies.set('expire', null)
   ctx.cookies.set('refreshToken', null)
@@ -165,6 +174,7 @@ const handleLogout = async ctx => {
     await send_gateway_request({
       method: 'GET',
       url: '/oauth/logout',
+      token,
     })
 
     if (isAppsRoute(refererPath)) {
@@ -183,6 +193,9 @@ const handleOAuthLogin = async ctx => {
   try {
     user = await oAuthLogin({ ...oauthParams, oauthName: ctx.params.name })
   } catch (err) {
+    /* eslint-disable no-console */
+    console.log(err)
+
     ctx.app.emit('error', err)
     Object.assign(error, {
       status: err.code,
@@ -201,7 +214,8 @@ const handleOAuthLogin = async ctx => {
   ctx.cookies.set('refreshToken', user.refreshToken)
 
   if (user.username === 'system:pre-registration') {
-    ctx.cookies.set('defaultUser', user.extraname)
+    const extraname = safeBase64.safeBtoa(user.extraname)
+    ctx.cookies.set('defaultUser', extraname)
     ctx.cookies.set('defaultEmail', user.email)
     return ctx.redirect('/login/confirm')
   }

@@ -89,7 +89,7 @@ export const CD_WEATHER_STATUS = [
 
 export const CD_SYNC_STATUS = [
   { text: 'SYNCED', value: 'Synced' },
-  { text: 'OUT_OF_SYNC', value: 'OutOfSync' },
+  { text: 'OUTOFSYNC', value: 'OutOfSync' },
   { text: 'UNKNOWN', value: 'Unknown' },
 ]
 
@@ -125,7 +125,7 @@ export const VOLUME_SNAPSHOT_STATUS = [
 
 export const VOLUME_SNAPSHOT_CLASS_STATUS = [
   { text: 'READY', value: 'true' },
-  { text: 'NOT_READY', value: 'false' },
+  { text: 'UNREADY', value: 'false' },
 ]
 
 export const INGRESS_ANNOTATIONS = [

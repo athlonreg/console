@@ -27,7 +27,12 @@ import { Panel, Avatar } from 'components/Base'
 import DeleteModal from 'components/Modals/Delete'
 import Banner from 'components/Cards/Banner'
 import Empty from 'components/Tables/Base/Empty'
-import { inCluster2Default, getDisplayName, getLocalTime } from 'utils'
+import {
+  inCluster2Default,
+  getDisplayName,
+  getLocalTime,
+  compareVersion,
+} from 'utils'
 import EditModal from 'devops/components/Modals/DevOpsEdit'
 
 import { trigger } from 'utils/action'
@@ -70,6 +75,22 @@ class BaseInfo extends React.Component {
     })
   }
 
+  get isMultiCluster() {
+    return globals.ksConfig.multicluster
+  }
+
+  get clusterVersion() {
+    return this.isMultiCluster
+      ? get(globals, `clusterConfig.${this.cluster}.ksVersion`)
+      : get(globals, 'ksConfig.ksVersion')
+  }
+
+  get isNeedHide() {
+    return (
+      compareVersion(this.clusterVersion, '3.3.0') < 0 || !this.isHostCluster
+    )
+  }
+
   get routing() {
     return this.props.rootStore.routing
   }
@@ -92,6 +113,13 @@ class BaseInfo extends React.Component {
 
   get cluster() {
     return this.props.match.params.cluster
+  }
+
+  get isHostCluster() {
+    return (
+      !globals.app.isMultiCluster ||
+      this.cluster === this.props.devopsStore.hostName
+    )
   }
 
   get enabledActions() {
@@ -487,7 +515,7 @@ class BaseInfo extends React.Component {
           module={this.module}
         />
         {this.renderBaseInfo()}
-        {this.renderCD()}
+        {this.isNeedHide ? null : this.renderCD()}
         <EditModal
           detail={data}
           workspace={this.workspace}

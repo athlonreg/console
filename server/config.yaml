@@ -37,6 +37,7 @@ server:
 client:
   title: KubeSphere
   description: ""
+  encryptKey: kubesphere
 
   version:
     kubesphere: 3.1.0
@@ -85,8 +86,8 @@ client:
   # platform management navigations
   globalNavs:
     - name: clusters
-      title: CLUSTERS_MANAGEMENT
-      desc: CLUSTERS_MANAGE_DESC
+      title: CLUSTER_MANAGEMENT
+      desc: CLUSTER_DESC
       icon: cluster
     - name: access
       title: ACCESS_CONTROL
@@ -179,6 +180,7 @@ client:
                 name: volume-snapshots,
                 title: VOLUME_SNAPSHOT_PL,
                 authKey: volumes,
+                requiredClusterVersion: v3.3.0,
               }
             - {
                 name: volume-snapshot-classes,
@@ -349,7 +351,7 @@ client:
       items:
         - { name: store, title: APPS, icon: appcenter }
         - { name: categories, title: APP_CATEGORY_PL, icon: tag }
-        - { name: reviews, title: APP_RELEASE, icon: safe-notice }
+        - { name: reviews, title: APP_REVIEW, icon: safe-notice }
 
   # project page navigations
   projectNavs:
@@ -511,12 +513,14 @@ client:
             title: CONTINUOUS_DEPLOYMENT_PL,
             icon: rocket,
             authKey: "applications",
+            requiredClusterVersion: v3.3.0,
           }
         - {
             name: code-repo,
             title: CODE_REPO_PL,
             icon: code,
             authKey: "gitrepositories",
+            requiredClusterVersion: v3.3.0,
           }
         - name: management
           title: DEVOPS_PROJECT_SETTINGS
