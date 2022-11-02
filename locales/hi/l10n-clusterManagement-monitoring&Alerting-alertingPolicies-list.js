@@ -17,13 +17,14 @@
  */
 module.exports = {
   // Banner
-  ALERTING_POLICY_PL: 'Alerting Policies',
-  ALERT_POLICY_DESC: 'Alerting policies are a series of conditions used to monitor cluster resources. You can create alerting policies to monitor resources.',
-  REQUESTS_FOR_TRIGGER_AN_ALARM_Q: 'How are alerting messages generated?',
-  REQUESTS_FOR_TRIGGER_AN_ALARM_A: 'You need to set an alerting policy for a resource. Alerting messages will be generated when the metric configured in the alerting policy reaches a threshold.',
+  ALERTING_POLICY_PL: 'Rule Groups',
+  ALERTING_POLICY_DESC: 'A rule group contains alert rules used to monitor cluster resources.',
+  REQUESTS_FOR_TRIGGER_AN_ALARM_Q: 'How are alerts generated?',
+  REQUESTS_FOR_TRIGGER_AN_ALARM_A: 'You need to create a rule group and set alert rules. The system will generate alerts when resource metrics meet conditions configured in rule groups.',
   // List
-  ALERTING_STATUS: 'Alerting Status',
-  ALERTING_POLICY_EMPTY_DESC: 'Please create an alerting policy.',
+  CUSTOM_POLICIES: 'Custom Rule Groups',
+  BUILT_IN_POLICIES: 'Built-in Rule Groups',
+  ALERTING_POLICY_EMPTY_DESC: 'Please create a rule group.',
   ALERT_RULE_INACTIVE: 'Inactive',
   ALERT_RULE_PENDING: 'लंबित',
   ALERT_RULE_FIRING: 'Firing',
@@ -32,20 +33,22 @@ module.exports = {
   ALERT_RULE_HEALTH_UNKNOWN: 'UnKnown',
   // List > Create > Basic Information
   SEVERITY: 'Severity',
-  CREATE_ALERTING_POLICY: 'Create Alerting Policy',
+  CREATE_ALERTING_POLICY: 'Create Rule Group',
   CRITICAL_ALERT: 'Critical',
   ERROR_ALERT: 'Error',
   WARNING_ALERT: 'Warning',
-  INVALID_TIME_DESC: 'Invalid value. Please select a value from the drop-down list or enter 0 or a positive integer.',
+  INVALID_TIME_DESC: 'Invalid value. Please enter 0 or a positive integer.',
   ALIAS: 'Alias',
-  THRESHOLD_DURATION_MIN: 'Threshold Duration (min)',
-  ALERT_DURATION: 'The status of the alerting policy becomes Firing when the duration of the condition configured in the alerting rule reaches the threshold.',
+  DURATION_MIN: 'Duration (minutes)',
+  ALERT_DURATION: 'When the alert situation persists longer than the value of this parameter, the system starts to send alerts to users.',
   LONG_NAME_DESC: 'The name can contain only lowercase letters, numbers, and hyphens (-), and must start and end with a lowercase letter or number. The maximum length is 253 characters.',
+  NAME_EXIST_DESC: 'The name already exists. Please enter another name.',
   // List > Create > Rule Settings > Rule Template
   RULE_SETTINGS: 'Rule Settings',
   MONITORING_TARGETS: 'Monitoring Targets',
   ACTIVATION_CONDITION: 'Activation Condition',
   CPU_USAGE_SCAP: 'CPU usage',
+  CPU_PERCENTAGE_SCAP: 'CPU percentage',
   DISK_READ_IOPS: 'Local disk read IOPS',
   DISK_READ_THROUGHPUT: 'Local disk read throughput',
   DISK_SPACE_AVAILABLE: 'Available local disk space',
@@ -55,6 +58,8 @@ module.exports = {
   MEMORY_AVAILABLE: 'Available memory',
   MEMORY_USAGE_CACHE: 'Memory usage (including caches)',
   MEMORY_USAGE_SCAP: 'Memory usage',
+  MEMORY_PERCENTAGE_CACHE: 'Memory percentage (including caches)',
+  MEMORY_PERCENTAGE_SCAP: 'Memory percentage',
   DATA_RECEIVE_RATE: 'Network data receiving rate',
   DATA_SEND_RATE: 'Network data sending rate',
   SET_ACTIVATION_CONDITION_DESC: 'Please set an activation condition.',
@@ -72,13 +77,18 @@ module.exports = {
   RULE_EXPRESSION: 'Rule Expression',
   ENTER_RULE_EXPRESSION: 'Please enter a rule expression.',
   ALERT_RULE_EXPRESSION_DESC: 'You can define a custom rule using PromQL statements. <a href="https://prometheus.io/docs/prometheus/latest/querying/basics/" target="_blank" rel="noreferrer noopener">Learn More</a>',
+  ALERT_FUNCTIONS: 'Functions',
+  ALERT_METRICS: 'Metrics',
+  ALERT_LABELS: 'Labels',
+  ALERT_RATE_RANGES: 'Rate Ranges',
   // List > Create > Message Settings
+  ALERTING_MESSAGE: 'Alert',
   MESSAGE_SETTINGS: 'Message Settings',
   NOTIFICATION_SUMMARY: 'Summary',
   NOTIFICATION_DETAILS: 'Details',
   // List > Edit
-  EDIT_ALERTING_POLICY: 'Edit Alerting Policy',
+  EDIT_ALERTING_POLICY: 'Edit Rule Group',
   // List > Delete
-  ALERTING_POLICY: 'Alerting Policy',
-  ALERTING_POLICY_LOW: 'alerting policy'
+  ALERTING_POLICY: 'Rule Group',
+  ALERTING_POLICY_LOW: 'rule group'
 };

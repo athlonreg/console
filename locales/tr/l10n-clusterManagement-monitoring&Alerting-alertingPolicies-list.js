@@ -17,13 +17,14 @@
  */
 module.exports = {
   // Banner
-  ALERTING_POLICY_PL: 'Uyarı Politikaları',
-  ALERT_POLICY_DESC: 'Uyarı ilkeleri, küme kaynaklarını izlemek için kullanılan bir dizi koşuldur. Kaynakları izlemek için uyarı ilkeleri oluşturabilirsiniz.',
-  REQUESTS_FOR_TRIGGER_AN_ALARM_Q: 'Alarm mesajları nasıl üretilir?',
-  REQUESTS_FOR_TRIGGER_AN_ALARM_A: 'Bir kaynak için bir uyarı politikası belirlemeniz gerekir. Uyarı politikasında yapılandırılan ölçüm bir eşiğe ulaştığında uyarı mesajları oluşturulur.',
+  ALERTING_POLICY_PL: 'Rule Groups',
+  ALERTING_POLICY_DESC: 'A rule group contains alert rules used to monitor cluster resources.',
+  REQUESTS_FOR_TRIGGER_AN_ALARM_Q: 'How are alerts generated?',
+  REQUESTS_FOR_TRIGGER_AN_ALARM_A: 'You need to create a rule group and set alert rules. The system will generate alerts when resource metrics meet conditions configured in rule groups.',
   // List
-  ALERTING_STATUS: 'Uyarı Durumu',
-  ALERTING_POLICY_EMPTY_DESC: 'Lütfen bir uyarı politikası oluşturun.',
+  CUSTOM_POLICIES: 'Custom Rule Groups',
+  BUILT_IN_POLICIES: 'Built-in Rule Groups',
+  ALERTING_POLICY_EMPTY_DESC: 'Please create a rule group.',
   ALERT_RULE_INACTIVE: 'İnaktif',
   ALERT_RULE_PENDING: 'Bekliyor',
   ALERT_RULE_FIRING: 'Ateşleme',
@@ -32,20 +33,22 @@ module.exports = {
   ALERT_RULE_HEALTH_UNKNOWN: 'Bilinmeyen',
   // List > Create > Basic Information
   SEVERITY: 'Önem',
-  CREATE_ALERTING_POLICY: 'Uyarı Politikası Oluştur',
+  CREATE_ALERTING_POLICY: 'Create Rule Group',
   CRITICAL_ALERT: 'Kritik',
   ERROR_ALERT: 'Hata',
   WARNING_ALERT: 'Dikkat',
-  INVALID_TIME_DESC: 'Geçersiz değer. Lütfen açılır listeden bir değer seçin 0 veya pozitif bir tam sayı girin.',
+  INVALID_TIME_DESC: 'Invalid value. Please enter 0 or a positive integer.',
   ALIAS: 'Takma ad',
-  THRESHOLD_DURATION_MIN: 'Eşik Süresi (dk)',
-  ALERT_DURATION: 'Uyarı kuralında yapılandırılan koşulun süresi eşiğe ulaştığında uyarı ilkesinin durumu tetikleniyor olur.',
+  DURATION_MIN: 'Duration (minutes)',
+  ALERT_DURATION: 'When the alert situation persists longer than the value of this parameter, the system starts to send alerts to users.',
   LONG_NAME_DESC: 'İsim yanlızda küçük harfler, sayılar ve kısa çizgiler(-) içerebilir ve küçük harf ve sayı ile başlayıp bitmelidir. Maksimum 253 karakter olabilir.',
+  NAME_EXIST_DESC: 'Ad zaten var. Lütfen başka bir ad girin.',
   // List > Create > Rule Settings > Rule Template
   RULE_SETTINGS: 'Kural Ayarları',
   MONITORING_TARGETS: 'Hedefleri İzleme',
   ACTIVATION_CONDITION: 'Aktivasyon koşulu',
   CPU_USAGE_SCAP: 'CPU kullanımı',
+  CPU_PERCENTAGE_SCAP: 'CPU percentage',
   DISK_READ_IOPS: 'Yerel disk okuma IOPS',
   DISK_READ_THROUGHPUT: 'Yerel disk okuma çıktısı',
   DISK_SPACE_AVAILABLE: 'Kullanılabilir yerel disk alanı',
@@ -55,6 +58,8 @@ module.exports = {
   MEMORY_AVAILABLE: 'Kullanılabilir bellek',
   MEMORY_USAGE_CACHE: 'Bellek kullanımı (önbellekler dahil)',
   MEMORY_USAGE_SCAP: 'Hafıza kullanımı',
+  MEMORY_PERCENTAGE_CACHE: 'Memory percentage (including caches)',
+  MEMORY_PERCENTAGE_SCAP: 'Memory percentage',
   DATA_RECEIVE_RATE: 'Ağ verisi alma hızı',
   DATA_SEND_RATE: 'Ağ verisi gönderme hızı',
   SET_ACTIVATION_CONDITION_DESC: 'Lütfen aktivasyon kodunu girin.',
@@ -72,13 +77,18 @@ module.exports = {
   RULE_EXPRESSION: 'Kural İfadesi',
   ENTER_RULE_EXPRESSION: 'Lütfen bir kural ifadesi girin.',
   ALERT_RULE_EXPRESSION_DESC: 'PromQL deyimlerini kullanarak özel bir kural tanımlayabilirsiniz. <a href="https://prometheus.io/docs/prometheus/latest/querying/basics/" target="_blank" rel="noreferrer noopener">Learn More</a>',
+  ALERT_FUNCTIONS: 'Functions',
+  ALERT_METRICS: 'Metrics',
+  ALERT_LABELS: 'Etiketler',
+  ALERT_RATE_RANGES: 'Rate Ranges',
   // List > Create > Message Settings
+  ALERTING_MESSAGE: 'Alert',
   MESSAGE_SETTINGS: 'Mesaj Ayarları',
   NOTIFICATION_SUMMARY: 'Özet',
   NOTIFICATION_DETAILS: 'Detaylar',
   // List > Edit
-  EDIT_ALERTING_POLICY: 'Uyarı Politikasını Düzenle',
+  EDIT_ALERTING_POLICY: 'Edit Rule Group',
   // List > Delete
-  ALERTING_POLICY: 'Uyarı Politikaları',
-  ALERTING_POLICY_LOW: 'uyarı politikası'
+  ALERTING_POLICY: 'Rule Group',
+  ALERTING_POLICY_LOW: 'rule group'
 };

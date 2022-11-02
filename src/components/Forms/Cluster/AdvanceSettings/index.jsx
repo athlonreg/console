@@ -32,7 +32,7 @@ export default class ClusterSettings extends React.Component {
     return (
       <div className={styles.wrapper}>
         <Title
-          title={t('Advanced Settings')}
+          title={t('ADVANCED_SETTINGS')}
           description={t('CLUSTER_ADVANCED_SETTINGS_DESC')}
         />
         <Form className={styles.form} data={formTemplate} ref={formRef}>
@@ -69,10 +69,10 @@ export default class ClusterSettings extends React.Component {
             checkable
             keepDataWhenUnCheck
           >
-            <Form.Item label={t('Domain')}>
+            <Form.Item label={t('DOMAIN')}>
               <Input name="spec.controlPlaneEndpoint.domain" />
             </Form.Item>
-            <Form.Item label={t('Address')}>
+            <Form.Item label={t('ADDRESS')}>
               <Input name="spec.controlPlaneEndpoint.address" />
             </Form.Item>
             <Form.Item label={t('PORT')}>

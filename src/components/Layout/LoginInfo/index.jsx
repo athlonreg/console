@@ -47,6 +47,9 @@ export default class LoginInfo extends Component {
   }
 
   handleMoreClick = (e, key) => {
+    const {
+      rootStore: { routing },
+    } = this.props
     switch (key) {
       case 'setting':
         this.trigger('user.setting', {})
@@ -56,6 +59,9 @@ export default class LoginInfo extends Component {
         break
       case 'logout':
         this.props.rootStore.logout()
+        break
+      case 'support':
+        routing.push('/support')
         break
       default:
         break

@@ -17,13 +17,14 @@
  */
 module.exports = {
   // Banner
-  ALERTING_POLICY_PL: '告警策略',
-  ALERT_POLICY_DESC: '告警策略是用於監控集群資源的一系列條件，您可以創建告警策略對資源進行監控。',
-  REQUESTS_FOR_TRIGGER_AN_ALARM_Q: '如何觸發告警訊息？',
-  REQUESTS_FOR_TRIGGER_AN_ALARM_A: '您需要對資源設置告警策略，當資源的某項指標達到告警策略的閥值後即會觸發告警訊息。',
+  ALERTING_POLICY_PL: 'Rule Groups',
+  ALERTING_POLICY_DESC: 'A rule group contains alert rules used to monitor cluster resources.',
+  REQUESTS_FOR_TRIGGER_AN_ALARM_Q: 'How are alerts generated?',
+  REQUESTS_FOR_TRIGGER_AN_ALARM_A: 'You need to create a rule group and set alert rules. The system will generate alerts when resource metrics meet conditions configured in rule groups.',
   // List
-  ALERTING_STATUS: '告警狀態',
-  ALERTING_POLICY_EMPTY_DESC: '請創建一個告警規則。',
+  CUSTOM_POLICIES: 'Custom Rule Groups',
+  BUILT_IN_POLICIES: 'Built-in Rule Groups',
+  ALERTING_POLICY_EMPTY_DESC: 'Please create a rule group.',
   ALERT_RULE_INACTIVE: '未觸發',
   ALERT_RULE_PENDING: '待觸發',
   ALERT_RULE_FIRING: '觸發中',
@@ -32,20 +33,22 @@ module.exports = {
   ALERT_RULE_HEALTH_UNKNOWN: '未知',
   // List > Create > Basic Information
   SEVERITY: '告警級別',
-  CREATE_ALERTING_POLICY: '創建告警策略',
+  CREATE_ALERTING_POLICY: 'Create Rule Group',
   CRITICAL_ALERT: '危險告警',
   ERROR_ALERT: '重要告警',
   WARNING_ALERT: '一般告警',
-  INVALID_TIME_DESC: '數值無效。請從下拉列表中選擇一個數值，或者輸入 0 或正整數。',
+  INVALID_TIME_DESC: 'Invalid value. Please enter 0 or a positive integer.',
   ALIAS: '別名',
-  THRESHOLD_DURATION_MIN: '閾值時間（分鐘）',
-  ALERT_DURATION: '告警規則中設置的情形持續時間達到該閾值後，告警策略將變為觸發中狀態。',
+  DURATION_MIN: 'Duration (minutes)',
+  ALERT_DURATION: 'When the alert situation persists longer than the value of this parameter, the system starts to send alerts to users.',
   LONG_NAME_DESC: '最長 253 個字元，只能包含小寫字母、數字及分隔符號("-")，且必須以小寫字母或數字開頭及結尾',
+  NAME_EXIST_DESC: '名稱已存在',
   // List > Create > Rule Settings > Rule Template
   RULE_SETTINGS: '規則設置',
   MONITORING_TARGETS: '監控目標',
   ACTIVATION_CONDITION: 'Activation Condition',
   CPU_USAGE_SCAP: 'CPU 用量',
+  CPU_PERCENTAGE_SCAP: 'CPU percentage',
   DISK_READ_IOPS: '本地磁碟讀取 IOPS',
   DISK_READ_THROUGHPUT: '本地磁碟讀取吞吐量',
   DISK_SPACE_AVAILABLE: '本地磁碟可用空間',
@@ -55,6 +58,8 @@ module.exports = {
   MEMORY_AVAILABLE: '可用記憶體',
   MEMORY_USAGE_CACHE: '記憶體用量（包含快取）',
   MEMORY_USAGE_SCAP: '記憶體用量',
+  MEMORY_PERCENTAGE_CACHE: 'Memory percentage (including caches)',
+  MEMORY_PERCENTAGE_SCAP: 'Memory percentage',
   DATA_RECEIVE_RATE: '網路接收數據速率',
   DATA_SEND_RATE: '網路發送數據速率',
   SET_ACTIVATION_CONDITION_DESC: 'Please set an activation condition.',
@@ -72,13 +77,18 @@ module.exports = {
   RULE_EXPRESSION: '告警規則表達式',
   ENTER_RULE_EXPRESSION: '請輸入告警規則表達式。',
   ALERT_RULE_EXPRESSION_DESC: '您可以通過 PromQL 語句來自定義告警規則。<a href="https://prometheus.io/docs/prometheus/latest/querying/basics/" target="_blank" rel="noreferrer noopener">了解更多</a>',
+  ALERT_FUNCTIONS: 'Functions',
+  ALERT_METRICS: 'Metrics',
+  ALERT_LABELS: '標籤',
+  ALERT_RATE_RANGES: 'Rate Ranges',
   // List > Create > Message Settings
+  ALERTING_MESSAGE: 'Alert',
   MESSAGE_SETTINGS: '訊息設置',
   NOTIFICATION_SUMMARY: '概括',
   NOTIFICATION_DETAILS: '詳情',
   // List > Edit
-  EDIT_ALERTING_POLICY: '編輯告警策略',
+  EDIT_ALERTING_POLICY: 'Edit Rule Group',
   // List > Delete
-  ALERTING_POLICY: '告警策略',
-  ALERTING_POLICY_LOW: '告警策略'
+  ALERTING_POLICY: 'Rule Group',
+  ALERTING_POLICY_LOW: 'rule group'
 };
