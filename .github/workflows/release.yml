@@ -33,7 +33,6 @@ jobs:
 
       - name: Build and push ks-console images
         uses: docker/build-push-action@v6
-        if: steps.chose_registry.outputs.env == 'prod'
         with:
           context: ${{ github.workspace }}
           file: build/Dockerfile.dapper
